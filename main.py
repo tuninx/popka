@@ -140,8 +140,8 @@ last_captcha_id = 0
 gold_to_left = 0
 
 bot_enabled = True
-arena_enabled = False
-les_enabled = False
+arena_enabled = True
+les_enabled = True
 peshera_enabled = False
 corovan_enabled = True
 order_enabled = True
@@ -183,7 +183,7 @@ def queue_worker():
                 if arena_delay and arena_delay_day != datetime.now(tz).day:
                     arena_delay = False
                 lt_info = time()
-                get_info_diff = random.randint(12600, 14400)
+                get_info_diff = random.randint(900, 1200)
                 if bot_enabled:
                     send_msg('@', bot_username, orders['hero'])
                 continue
