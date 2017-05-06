@@ -140,12 +140,12 @@ last_captcha_id = 0
 gold_to_left = 0
 
 bot_enabled = True
-arena_enabled = True
-les_enabled = True
+arena_enabled = False
+les_enabled = False
 peshera_enabled = False
 corovan_enabled = True
 order_enabled = True
-auto_def_enabled = True
+auto_def_enabled = False
 donate_enabled = False
 quest_fight_enabled = True
 
@@ -183,7 +183,7 @@ def queue_worker():
                 if arena_delay and arena_delay_day != datetime.now(tz).day:
                     arena_delay = False
                 lt_info = time()
-                get_info_diff = random.randint(900, 1200)
+                get_info_diff = random.randint(12600, 14400)
                 if bot_enabled:
                     send_msg('@', bot_username, orders['hero'])
                 continue
@@ -249,6 +249,7 @@ def parse_text(text, username, message_id):
             arena_running = False
 
         elif corovan_enabled and text.find(' /go') != -1:
+            sleep(3, 45)
             action_list.append(orders['corovan'])
 
         elif text.find('Битва семи замков через') != -1:
@@ -316,7 +317,9 @@ def parse_text(text, username, message_id):
         elif arena_enabled and text.find('выбери точку атаки и точку защиты') != -1:
             arena_running = True #на случай, если арена запущена руками
             lt_arena = time()
+            sleep(1, 4)
             attack_chosen = arena_attack[random.randint(0, 2)]
+            sleep(1, 2)
             cover_chosen = arena_cover[random.randint(0, 2)]
             log('Атака: {0}, Защита: {1}'.format(attack_chosen, cover_chosen))
             action_list.append(attack_chosen)
