@@ -249,7 +249,6 @@ def parse_text(text, username, message_id):
             arena_running = False
 
         elif corovan_enabled and text.find(' /go') != -1:
-            sleep(3, 45)
             action_list.append(orders['corovan'])
 
         elif text.find('Битва семи замков через') != -1:
@@ -317,9 +316,7 @@ def parse_text(text, username, message_id):
         elif arena_enabled and text.find('выбери точку атаки и точку защиты') != -1:
             arena_running = True #на случай, если арена запущена руками
             lt_arena = time()
-            sleep(1, 4)
             attack_chosen = arena_attack[random.randint(0, 2)]
-            sleep(1, 2)
             cover_chosen = arena_cover[random.randint(0, 2)]
             log('Атака: {0}, Защита: {1}'.format(attack_chosen, cover_chosen))
             action_list.append(attack_chosen)
