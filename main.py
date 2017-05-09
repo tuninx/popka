@@ -21,6 +21,9 @@ admin_username = ''
 # username бота и/или человека, которые будут отправлять приказы
 order_usernames = ''
 
+#group forwards
+peresilka = 'fitem'
+
 # имя замка
 castle_name = 'blue'
 
@@ -176,6 +179,7 @@ def queue_worker():
     # гребаная магия
     print(sender.contacts_search(bot_username))
     print(sender.contacts_search(captcha_bot))
+    print(sender.contacts_search(peresilka))
     sleep(3)
     while True:
         try:
@@ -329,6 +333,7 @@ def parse_text(text, username, message_id):
         elif quest_fight_enabled and text.find('/fight') != -1:
             c = re.search('(\/fight.*)', text).group(1)
             action_list.append(c)
+            fwd('@', peresilka, message_id)
 
     elif username == 'ChatWarsCaptchaBot':
         if len(text) <= 4 and text in captcha_answers.values():
