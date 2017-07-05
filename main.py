@@ -86,6 +86,8 @@ orders = {
     'les': '🌲Лес',
     'gorni_fort': '⛰Горный форт',
     'gora': '⛰',
+    'morskoi_fort': '⚓Морской форт',
+    'morko': '⚓️',
     'cover': '🛡 Защита',
     'attack': '⚔ Атака',
     'cover_symbol': '🛡',
@@ -361,6 +363,8 @@ def parse_text(text, username, message_id):
                 update_order(orders['lesnoi_fort'])
             elif text.find('⛰') != -1:
                 update_order(orders['gorni_fort'])
+            elif text.find('⚓️') != -1:
+                update_order(orders['morskoi_fort'])
             elif text.find('🛡') != -1:
                 update_order(castle)
 
