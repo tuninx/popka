@@ -94,6 +94,7 @@ orders = {
     'hero': '🏅Герой',
     'corovan': '/go',
     'peshera': '🕸Пещера',
+    'moovan': '🐫ГРАБИТЬ КОРОВАНЫ',
     'quests': '🗺 Квесты',
     'castle_menu': '🏰Замок',
     'lavka': '🏚Лавка',
@@ -145,9 +146,10 @@ last_captcha_id = 0
 gold_to_left = 0
 
 bot_enabled = True
-arena_enabled = True
+arena_enabled = False
 les_enabled = True
 peshera_enabled = False
+moovan_enabled = False
 corovan_enabled = True
 order_enabled = True
 auto_def_enabled = False
@@ -210,6 +212,7 @@ def parse_text(text, username, message_id):
     global arena_enabled
     global les_enabled
     global peshera_enabled
+    global moovan_enabled
     global corovan_enabled
     global order_enabled
     global auto_def_enabled
@@ -306,6 +309,10 @@ def parse_text(text, username, message_id):
             elif les_enabled and not peshera_enabled and endurance >= 1 and orders['les'] not in action_list and text.find('🛌Отдых') != -1:
                 action_list.append(orders['quests'])
                 action_list.append(orders['les'])
+                
+            elif moovan_enabled and not peshera_enabled and not les_enabled and endurance >= 2 and orders['moovan'] not in action_list and text.find('🛌Отдых') != -1:
+                action_list.append(orders['quests'])
+                action_list.append(orders['moovan'])               
 
             elif arena_enabled and not arena_delay and gold >= 5 and not arena_running and text.find('🛌Отдых') != -1:
                 curhour = datetime.now(tz).hour
