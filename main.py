@@ -95,6 +95,7 @@ orders = {
     'corovan': '/go',
     'peshera': '🕸Пещера',
     'moovan': '🐫ГРАБИТЬ КОРОВАНЫ',
+    'bereg': '🏝Побережье',
     'quests': '🗺 Квесты',
     'castle_menu': '🏰Замок',
     'lavka': '🏚Лавка',
@@ -150,6 +151,7 @@ arena_enabled = False
 les_enabled = False
 peshera_enabled = False
 moovan_enabled = False
+bereg_enabled = False
 corovan_enabled = True
 order_enabled = True
 auto_def_enabled = False
@@ -213,6 +215,7 @@ def parse_text(text, username, message_id):
     global les_enabled
     global peshera_enabled
     global moovan_enabled
+    global bereg_enabled
     global corovan_enabled
     global order_enabled
     global auto_def_enabled
@@ -310,10 +313,14 @@ def parse_text(text, username, message_id):
                 action_list.append(orders['quests'])
                 action_list.append(orders['les'])
                 
-            elif moovan_enabled and not peshera_enabled and not les_enabled and endurance >= 2 and orders['moovan'] not in action_list and text.find('🛌Отдых') != -1:
+            elif moovan_enabled and not peshera_enabled and not les_enabled and not bereg_enabled and endurance >= 2 and orders['moovan'] not in action_list and text.find('🛌Отдых') != -1:
                 action_list.append(orders['quests'])
-                action_list.append(orders['moovan'])               
-
+                action_list.append(orders['moovan']) 
+                
+            elif bereg_enabled and not peshera_enabled and not moovan_enabled and and not les_enabled endurance >= 1 and orders['bereg'] not in action_list and text.find('🛌Отдых') != -1:
+                action_list.append(orders['quests'])
+                action_list.append(orders['bereg'])
+                
             elif arena_enabled and not arena_delay and gold >= 5 and not arena_running and text.find('🛌Отдых') != -1:
                 curhour = datetime.now(tz).hour
                 if 9 <= curhour <= 23:
@@ -391,6 +398,8 @@ def parse_text(text, username, message_id):
                     '#disable_corovan - Выключить корован',
                     '#enable_moovan - Включить moovan',
                     '#disable_moovan - Выключить moovan',
+                    '#enable_bereg - Включить побережье',
+                    '#disable_bereg - Выключить побережье',
                     '#enable_order - Включить приказы',
                     '#disable_order - Выключить приказы',
                     '#enable_auto_def - Включить авто деф',
@@ -461,7 +470,15 @@ def parse_text(text, username, message_id):
                 send_msg(pref, msg_receiver, 'Moovan успешно включен')
             elif text == '#disable_moovan':
                 moovan_enabled = False
-                send_msg(pref, msg_receiver, 'Moovan успешно выключены')    
+                send_msg(pref, msg_receiver, 'Moovan успешно выключены')
+                
+            # Вкл/выкл bereg
+            elif text == '#enable_bereg':
+                bereg_enabled = True
+                send_msg(pref, msg_receiver, 'Побережье успешно включено')
+            elif text == '#disable_bereg':
+                bereg_enabled = False
+                send_msg(pref, msg_receiver, 'Побережье успешно выключено')                
 
             # Вкл/выкл команд
             elif text == '#enable_order':
@@ -522,14 +539,15 @@ def parse_text(text, username, message_id):
                     '🔎Сейчас на арене: {2}',
                     '🌲Лес включен: {3}',
                     '🕸Пещеры включены: {4}',
-                    '🐫Корованы включены: {5}',
-                    '🤠Грабим корованы: {6}',
-                    '🇪🇺Приказы включены: {7}',
-                    '🛡Авто деф включен: {8}',
-                    '💰Донат включен: {9}',
-                    '🏚Донат в лавку вместо казны: {10}',
-                    '🌟Левелап: {11}',
-                ]).format(bot_enabled, arena_enabled, arena_running, les_enabled, peshera_enabled, corovan_enabled, moovan_enabled, order_enabled, 
+                    '🏝Побережье включено: {5}',
+                    '🐫Корованы включены: {6}',
+                    '🤠Грабим корованы: {7}',
+                    '🇪🇺Приказы включены: {8}',
+                    '🛡Авто деф включен: {9}',
+                    '💰Донат включен: {10}',
+                    '🏚Донат в лавку вместо казны: {11}',
+                    '🌟Левелап: {12}',
+                ]).format(bot_enabled, arena_enabled, arena_running, les_enabled, peshera_enabled, bereg_enabled, corovan_enabled, moovan_enabled, order_enabled, 
                           auto_def_enabled, donate_enabled, donate_buying,orders[lvl_up]))
 
             # Информация о герое
