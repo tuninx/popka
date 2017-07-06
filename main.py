@@ -317,7 +317,7 @@ def parse_text(text, username, message_id):
                 action_list.append(orders['quests'])
                 action_list.append(orders['moovan']) 
                 
-            elif bereg_enabled and not peshera_enabled and not moovan_enabled and and not les_enabled and endurance >= 1 and orders['bereg'] not in action_list and text.find('🛌Отдых') != -1:
+            elif bereg_enabled and endurance >= 1 and orders['bereg'] not in action_list and text.find('🛌Отдых') != -1:
                 action_list.append(orders['quests'])
                 action_list.append(orders['bereg'])
                 
