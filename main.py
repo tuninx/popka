@@ -461,7 +461,7 @@ def parse_text(text, username, message_id):
                 send_msg(pref, msg_receiver, 'Moovan успешно включен')
             elif text == '#disable_moovan':
                 moovan_enabled = False
-                send_msg(pref, msg_receiver, 'Корованы успешно выключены')    
+                send_msg(pref, msg_receiver, 'Moovan успешно выключены')    
 
             # Вкл/выкл команд
             elif text == '#enable_order':
