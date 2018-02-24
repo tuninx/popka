@@ -243,7 +243,7 @@ def parse_text(text, username, message_id):
             action_list.append(orders[lvl_up])
 
         elif "Ты встретил несколько больных" in text:
-            send_msg('@', admin_username, "**Поймал капчу, беги к врачу**")
+            send_msg('@', peresilka, "**Поймал капчу, беги к врачу**")
             action_list.clear()
             bot_enabled = False
 
