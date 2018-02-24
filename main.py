@@ -148,7 +148,7 @@ gold_to_left = 0
 
 bot_enabled = True
 arena_enabled = False
-les_enabled = False
+les_enabled = True
 peshera_enabled = False
 moovan_enabled = False
 bereg_enabled = False
