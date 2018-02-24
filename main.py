@@ -242,13 +242,10 @@ def parse_text(text, username, message_id):
             action_list.append('/level_up')
             action_list.append(orders[lvl_up])
 
-        elif "На выходе из замка охрана никого не пропускает" in text:
-            # send_msg('@', admin_username, "Командир, у нас проблемы с капчой! #captcha " + '|'.join(captcha_answers.keys()))
-            # fwd('@', admin_username, message_id)
+        elif "Ты встретил несколько больных" in text:
+            send_msg('@', admin_username, "**Поймал капчу, беги к врачу**")
             action_list.clear()
             bot_enabled = False
-            last_captcha_id = message_id
-            fwd('@', captcha_bot, message_id)
 
         elif 'Не умничай!' in text or 'Ты долго думал, аж вспотел от напряжения' in text:
             send_msg('@', admin_username, "Командир, у нас проблемы с капчой! #captcha " + '|'.join(captcha_answers.keys()))
