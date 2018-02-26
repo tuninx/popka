@@ -247,13 +247,9 @@ def parse_text(text, username, message_id):
             action_list.clear()
             bot_enabled = False
 
-        elif 'Не умничай!' in text or 'Ты долго думал, аж вспотел от напряжения' in text:
-            send_msg('@', admin_username, "Командир, у нас проблемы с капчой! #captcha " + '|'.join(captcha_answers.keys()))
+        elif 'Выносливость не возвращается' in text or 'Пора попариться' in text:
+            send_msg('@', peresilka, "**Поймал капчу, беги к врачу**")
             bot_enabled = False
-            if last_captcha_id != 0:
-                fwd('@', admin_username, message_id)
-            else:
-                send_msg('@', admin_username, 'Капча не найдена?')
 
         elif 'На сегодня ты уже своё отвоевал. Приходи завтра.' in text:
             arena_delay = True
