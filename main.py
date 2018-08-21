@@ -122,7 +122,7 @@ def parse_text(text, username, message_id):
     global quest_fight_enabled
     if bot_enabled and username == bot_username:
                
-           if corovan_enabled and text.find('пытается ограбить') != -1:
+           if corovan_enabled and text.find(' /go') != -1:
             action_list.append(orders['corovan'])
 
       
