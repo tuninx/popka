@@ -123,7 +123,7 @@ def parse_text(text, username, message_id):
     if bot_enabled and username == bot_username:
                
            if corovan_enabled and text.find('пытается ограбить') != -1:
-           action_list.append(orders['corovan'])
+            action_list.append(orders['corovan'])
 
       
             # Вкл/выкл бота
