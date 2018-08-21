@@ -128,18 +128,18 @@ def parse_text(text, username, message_id):
 
       
             # Вкл/выкл бота
-            elif text == '#enable_bot':
+            if text == '#enable_bot':
                 bot_enabled = True
                 send_msg(pref, msg_receiver, 'Бот успешно включен')
-            elif text == '#disable_bot':
+            if text == '#disable_bot':
                 bot_enabled = False
                 send_msg(pref, msg_receiver, 'Бот успешно выключен')
 
             # Вкл/выкл корована
-            elif text == '#enable_corovan':
+            if text == '#enable_corovan':
                 corovan_enabled = True
                 send_msg(pref, msg_receiver, 'Корованы успешно включены')
-            elif text == '#disable_corovan':
+            if text == '#disable_corovan':
                 corovan_enabled = False
                 send_msg(pref, msg_receiver, 'Корованы успешно выключены')
 
