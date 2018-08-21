@@ -14,7 +14,7 @@ import random
 import pytz
 
 # username игрового бота
-bot_username = 'ChatWarsBot'
+bot_username = 'keeketheone'
 
 # ваш username или username человека, который может отправлять запросы этому скрипту
 admin_username = ''
@@ -123,8 +123,7 @@ def parse_text(text, username, message_id):
     if bot_enabled and username == bot_username:
                
            if corovan_enabled and text.find('пытается ограбить') != -1:
-            sleep(randint(2, 40))
-            action_list.append(orders['corovan'])
+           action_list.append(orders['corovan'])
 
       
             # Вкл/выкл бота
